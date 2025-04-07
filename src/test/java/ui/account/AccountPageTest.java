@@ -52,6 +52,9 @@ public class AccountPageTest extends BasePageTest {
         assertEquals("Account details changed successfully.", message, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
+    /**
+     * Создание заказа и проверка его появления в заказах на странице пользователя
+     */
     @Test
     public void checkAddingOrder() {
         CheckoutFormData checkoutFormData = getCheckoutFormData();

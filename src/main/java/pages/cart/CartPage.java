@@ -96,7 +96,6 @@ public class CartPage extends BasePage {
                 .ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.elementToBeClickable(proceedToPaymentButton))
                 .click();
-        //      proceedToPaymentButton.click();
     }
 
     public Boolean loadingProductTable() {

@@ -1,6 +1,7 @@
 package ui.auth;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.auth.RegisterPage;
 import ui.BasePageTest;
@@ -26,10 +27,8 @@ public class RegisterPageTest extends BasePageTest {
         registerPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.REGISTER_URL);
     }
 
-    /**
-     * Пользователь успешно регистрируется при вводе валидных значений
-     */
     @Test
+    @DisplayName("Пользователь успешно регистрируется при вводе валидных значений")
     public void successRegister() {
         String message = registerPage
                 .fillOutRegisterForm(username, email, password)
@@ -39,10 +38,8 @@ public class RegisterPageTest extends BasePageTest {
         assertEquals("Регистрация завершена", message, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Пользователь пытается создать уже существующий аккаунт и получает ошибку
-     */
     @Test
+    @DisplayName("Пользователь пытается создать уже существующий аккаунт и получает ошибку")
     public void repeatRegister() {
         registerPage
                 .fillOutRegisterForm(username, email, password)
@@ -58,10 +55,8 @@ public class RegisterPageTest extends BasePageTest {
         assertEquals("Error: Учетная запись с такой почтой уже зарегистировавана. Пожалуйста авторизуйтесь.", message, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Пользователь пытается зарегистрироваться, не вводя пароль и получает ошибку
-     */
     @Test
+    @DisplayName("Пользователь пытается зарегистрироваться, не вводя пароль и получает ошибку")
     public void missingPasswordRegister() {
         String password = RegisterData.EMPTY_PASSWORD;
 

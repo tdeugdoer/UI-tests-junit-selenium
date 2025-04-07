@@ -2,6 +2,7 @@ package ui.cart;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.auth.LoginPage;
 import pages.cart.CartPage;
@@ -47,10 +48,8 @@ public class CartPageTest extends BasePageTest {
         cartPage.clearCart();
     }
 
-    /**
-     * Увеличение и уменьшение количества товара
-     */
     @Test
+    @DisplayName("Увеличение и уменьшение количества товара")
     public void changeProductQuantity() {
         Integer beforeQuantity = cartPage.getFirstProductQuantity();
         cartPage.setFirstProductQuantity(beforeQuantity + 1);
@@ -59,10 +58,8 @@ public class CartPageTest extends BasePageTest {
         assertEquals(beforeQuantity + 1, afterQuantity, FailMessages.NUMBER_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Обновление корзины после изменения содержимого
-     */
     @Test
+    @DisplayName("Обновление корзины после изменения содержимого")
     public void updateAfterChanges() {
         Integer beforeTotalCartAmount = cartPage.getFirstProductQuantity();
         cartPage.setFirstProductQuantity(cartPage.getFirstProductQuantity() + 1)
@@ -73,10 +70,8 @@ public class CartPageTest extends BasePageTest {
         assertTrue(afterTotalCartAmount > beforeTotalCartAmount, FailMessages.PRICE_SHOULD_INCREASE);
     }
 
-    /**
-     * Переход к оплате (авторизованный пользователь)
-     */
     @Test
+    @DisplayName("Переход к оплате (авторизованный пользователь)")
     public void proceedToCheckoutForLoggedInUser() {
         cartPage.clickProceedToPayment();
         String message = checkoutBasePage.getPostTitle();
@@ -84,10 +79,8 @@ public class CartPageTest extends BasePageTest {
         assertEquals("ОФОРМЛЕНИЕ ЗАКАЗА", message, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Применение промокода из раздела «Акции»
-     */
     @Test
+    @DisplayName("Применение промокода из раздела «Акции»")
     public void applyPromoCodeFromSalesSection() {
         cartPage.clickPromoPageButton();
         String coupon = promoPage.getFirstCoupon();

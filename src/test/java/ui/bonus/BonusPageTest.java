@@ -1,6 +1,7 @@
 package ui.bonus;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.bonus.BonusPage;
 import ui.BasePageTest;
@@ -19,10 +20,8 @@ public class BonusPageTest extends BasePageTest {
         bonusPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.BONUS_URL);
     }
 
-    /**
-     * Успешное оформление карты с проверкой текста «Заявка отправлена, дождитесь, пожалуйста, оформления карты!»
-     */
     @Test
+    @DisplayName("Успешное оформление карты с проверкой текста «Заявка отправлена, дождитесь, пожалуйста, оформления карты!»")
     public void createBonusCard() {
         String alertMessage = bonusPage.fillOutBonusForm(BonusData.USERNAME, BonusData.PHONE_NUMBER)
                 .clickSubmit()

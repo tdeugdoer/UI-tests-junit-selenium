@@ -2,6 +2,7 @@ package ui.checkout;
 
 import formData.CheckoutFormData;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.auth.LoginPage;
 import pages.cart.CartPage;
@@ -46,10 +47,8 @@ public class CheckoutFillingDataPageTest extends BasePageTest {
         cartPage.clickProceedToPayment();
     }
 
-    /**
-     * Установка даты заказа
-     */
     @Test
+    @DisplayName("Установка даты заказа")
     public void orderTime() {
         String tomorrowString = DateUtils.getTomorrowDateString();
 
@@ -65,10 +64,8 @@ public class CheckoutFillingDataPageTest extends BasePageTest {
         assertEquals("ЗАКАЗ ПОЛУЧЕН", title, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Успешное оформление заказа с оплатой наличными
-     */
     @Test
+    @DisplayName("Успешное оформление заказа с оплатой наличными")
     public void paymentInCash() {
         checkoutDataFillingPage
                 .fillOutOrderDetails(checkoutFormData)

@@ -2,6 +2,7 @@ package ui.account;
 
 import formData.CheckoutFormData;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.account.*;
 import pages.auth.LoginPage;
@@ -11,6 +12,7 @@ import pages.main.MainPage;
 import pages.menu.MenuPage;
 import ui.BasePageTest;
 import utils.FailMessages;
+import utils.FileDownloader;
 import utils.StringGenerator;
 import utils.TestConstants;
 import utils.data.CheckoutData;
@@ -39,23 +41,20 @@ public class AccountPageTest extends BasePageTest {
                 .clickLoginButton();
     }
 
-    /**
-     * Загрузка файла
-     */
     @Test
+    @DisplayName("Загрузка файла")
     public void changeAccountImage() {
         accountBasePage.clickEditAccountLink();
-        accountEditPage.inputFile("D:\\Учёба своё\\Проекты\\UI-tests-junit\\src\\test\\resources\\images\\Profile.jpg")
+        accountEditPage.inputFile(FileDownloader.downloadFileToTemp("https://yt3.googleusercontent.com/ytc/AIdro_ljFZmd80sh4pvzQENH22j-J9HBKD1_hFa8hp2ga9DgtN4=s900-c-k-c0x00ffffff-no-rj",
+                        "Profile", ".png").toString())
                 .clickSaveAccountDetailsButton();
         String message = accountInformationPage.getMessage();
 
         assertEquals("Account details changed successfully.", message, FailMessages.STRING_NOT_MATCH_EXPECTED);
     }
 
-    /**
-     * Создание заказа и проверка его появления в заказах на странице пользователя
-     */
     @Test
+    @DisplayName("Создание заказа и проверка его появления в заказах на странице пользователя")
     public void checkAddingOrder() {
         CheckoutFormData checkoutFormData = getCheckoutFormData();
 

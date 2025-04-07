@@ -1,6 +1,7 @@
 package ui.main;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -25,10 +26,8 @@ public class MainPageTest extends BasePageTest {
         mainPage.open(TestConstants.Urls.BASE_URL);
     }
 
-    /**
-     * Переключение пиццы в слайдере нажатием на клавиатуре стрелки влево и вправо;
-     */
     @Test
+    @DisplayName("Переключение пиццы в слайдере нажатием на клавиатуре стрелки влево и вправо")
     public void slidePizzaSliderByKeys() {
         List<WebElement> initialVisiblePizzaList = mainPage.getVisiblePizzaInSlider();
 
@@ -44,10 +43,8 @@ public class MainPageTest extends BasePageTest {
         );
     }
 
-    /**
-     * Переключение пиццы в слайдере нажатием стрелки влево и вправо;
-     */
     @Test
+    @DisplayName("Переключение пиццы в слайдере нажатием стрелки влево и вправо")
     public void slidePizzaSliderByButtons() {
         List<WebElement> initialVisiblePizzaList = mainPage.getVisiblePizzaInSlider();
 
@@ -63,10 +60,8 @@ public class MainPageTest extends BasePageTest {
         );
     }
 
-    /**
-     * Проверка отображения ссылки "В корзину" при наведении на картинку напитка.
-     */
     @Test
+    @DisplayName("Проверка отображения ссылки 'В корзину' при наведении на картинку напитка")
     public void addToCartLinkAppearsOnHover() {
         Long beforeCountVisibleDrinkToCartButtons = mainPage.getCountDrinkWithVisibleCartButtons();
         mainPage.moveToFirstDrinkImage();
@@ -78,10 +73,8 @@ public class MainPageTest extends BasePageTest {
         );
     }
 
-    /**
-     * Проверка перехода на страницу десерта при клике по его картинке.
-     */
     @Test
+    @DisplayName("Проверка перехода на страницу десерта при клике по его картинке")
     public void clickOnDessertImageRedirectsToDessertPage() {
         String firstDesertName = mainPage.getFirstDesertTitle();
         mainPage.clickFirstDesertPageLink();
@@ -90,19 +83,15 @@ public class MainPageTest extends BasePageTest {
         assertTrue(Objects.requireNonNull(currentPageTitle, FailMessages.STRING_SHOULD_NOT_BE_NULL).contains(firstDesertName), FailMessages.STRING_NOT_HAS_EXPECTED);
     }
 
-    /**
-     * Проверка отображения стрелки "Наверх" при скроллинге вниз страницы.
-     */
     @Test
+    @DisplayName("Проверка отображения стрелки 'Наверх' при скроллинге вниз страницы")
     public void scrollToTopArrowAppearsWhenScrolledDown() {
         Boolean isScrollArrowVisible = mainPage.isTopScrollArrowVisible();
         assertTrue(isScrollArrowVisible, FailMessages.ELEMENT_NOT_VISIBLE);
     }
 
-    /**
-     * Проверка открытия ссылок на соцсети в новой вкладке.
-     */
     @Test
+    @DisplayName("Проверка открытия ссылок на соцсети в новой вкладке")
     public void socialMediaLinksOpenInNewTab() {
         Integer beforeWindowCount = getWindowCount();
         String originalWindow = driver.getWindowHandle();

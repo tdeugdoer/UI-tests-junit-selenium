@@ -1,6 +1,7 @@
 package ui.menu;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.cart.CartPage;
 import pages.menu.MenuPage;
@@ -21,10 +22,8 @@ public class MenuPageTest extends BasePageTest {
         menuPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.MENU_URL);
     }
 
-    /**
-     * Применение сортировки пицц
-     */
     @Test
+    @DisplayName("Применение сортировки пицц")
     public void sorting() {
         menuPage.sortMenuByAscPrice();
 
@@ -36,10 +35,8 @@ public class MenuPageTest extends BasePageTest {
         assertEquals(sortedCardsPrices, menuCardsPrices, FailMessages.MENU_NOT_SORTED_BY_PRICE_ASC);
     }
 
-    /**
-     * Фильтрация пицц по цене
-     */
     @Test
+    @DisplayName("Фильтрация пицц по цене")
     public void priceFiltering() {
         Integer expectedMinPrice = 300;
         Integer expectedMaxPrice = 480;
@@ -59,10 +56,8 @@ public class MenuPageTest extends BasePageTest {
 
     }
 
-    /**
-     * Добавление пиццы в корзину
-     */
     @Test
+    @DisplayName("Добавление пиццы в корзину")
     public void additionToCart() {
         menuPage.addToCartFirstProduct()
                 .clickLinkToCart();

@@ -1,6 +1,7 @@
 package ui.delivery;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.delivery.DeliveryPage;
 import ui.BasePageTest;
@@ -19,10 +20,8 @@ public class DeliveryPageTest extends BasePageTest {
         deliveryPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.DELIVERY_URL);
     }
 
-    /**
-     * Проверка, что на сайте в этом разделе отображается текст «Минимальная сумма заказа — 800 рублей».
-     */
     @Test
+    @DisplayName("Проверка, что на сайте в этом разделе отображается текст «Минимальная сумма заказа — 800 рублей».")
     public void minDeliveryAmount() {
         List<String> termsOfDelivery = deliveryPage.getTermsOfDelivery();
 

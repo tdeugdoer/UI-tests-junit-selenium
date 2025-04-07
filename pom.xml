@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.tserashkevich</groupId>
@@ -10,7 +10,7 @@
     <properties>
         <java.version>21</java.version>
         <junit.version>5.12.1</junit.version>
-        <selenium.version>4.30.0</selenium.version>
+        <selenium.version>4.31.0</selenium.version>
         <lombok.version>1.18.36</lombok.version>
         <logback.version>1.5.18</logback.version>
     </properties>

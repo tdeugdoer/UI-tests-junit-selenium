@@ -1,5 +1,6 @@
 package ui.delivery;
 
+import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import utils.TestConstants;
 
 import java.util.List;
 
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DeliveryPageTest extends BasePageTest {
@@ -17,15 +19,23 @@ public class DeliveryPageTest extends BasePageTest {
 
     @BeforeEach
     public void setUp() {
-        deliveryPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.DELIVERY_URL);
+        step("Открываем страницу условиями доставки", () ->
+                deliveryPage.open(TestConstants.Urls.BASE_URL + TestConstants.Urls.DELIVERY_URL)
+        );
     }
 
     @Test
-    @DisplayName("Проверка, что на сайте в этом разделе отображается текст «Минимальная сумма заказа — 800 рублей».")
+    @DisplayName("Минимальная сумма доставки")
+    @Description("Проверка, что на сайте в этом разделе отображается текст «Минимальная сумма заказа — 800 рублей».")
+    @Severity(SeverityLevel.MINOR)
+    @Owner("Yahor Tserashkevich")
+    @Link(name = "Website", url = "https://pizzeria.skillbox.cc/delivery/")
     public void minDeliveryAmount() {
-        List<String> termsOfDelivery = deliveryPage.getTermsOfDelivery();
+        step("Получение условий доставки", () -> {
+            List<String> termsOfDelivery = deliveryPage.getTermsOfDelivery();
 
-        assertTrue(termsOfDelivery.contains("Минимальная сумма заказа — 800 рублей"), FailMessages.EXPECTED_STRING_MISSING);
+            assertTrue(termsOfDelivery.contains("Минимальная сумма заказа — 800 рублей"), FailMessages.EXPECTED_STRING_MISSING);
+        });
     }
 
 }

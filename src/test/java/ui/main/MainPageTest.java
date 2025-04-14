@@ -119,6 +119,7 @@ public class MainPageTest extends BasePageTest {
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(originalWindow)) {
                 driver.switchTo().window(windowHandle);
+                return;
             }
         }
         throw new IllegalStateException(ExceptionMessages.NEW_WINDOW_NOT_FOUND);
